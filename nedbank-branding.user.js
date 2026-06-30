@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Snowflake CoWork – Nedbank Branding
 // @namespace    http://tampermonkey.net/
-// @version      1.0.0
+// @version      4.1.0
 // @updateURL    https://raw.githubusercontent.com/jaderiley/nedbank-snowflake-branding/main/nedbank-branding.user.js
 // @downloadURL  https://raw.githubusercontent.com/jaderiley/nedbank-snowflake-branding/main/nedbank-branding.user.js
 // @match        https://ai.snowflake.com/*
