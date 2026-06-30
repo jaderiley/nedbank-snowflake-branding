@@ -11,6 +11,8 @@ Replaces the Snowflake CoWork logo with the Nedbank logo on [ai.snowflake.com](h
    - [Firefox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)
    - [Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd)
 
+   > **Chrome users:** after installing Tampermonkey, open `chrome://extensions`, find Tampermonkey and click **Details**, then enable **Allow User Scripts**. The script will not run without this step.
+
 2. **Click the install link:**
    [https://raw.githubusercontent.com/jaderiley/nedbank-snowflake-branding/main/nedbank-branding.user.js](https://raw.githubusercontent.com/jaderiley/nedbank-snowflake-branding/main/nedbank-branding.user.js)
 
