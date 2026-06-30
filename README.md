@@ -1,33 +1,66 @@
 # Snowflake CoWork – Nedbank Branding
 
-Replaces the Snowflake CoWork logo with the Nedbank logo on [ai.snowflake.com](https://ai.snowflake.com). Auto-updates whenever a new version is pushed.
+A Tampermonkey userscript that replaces the Snowflake CoWork logo with the Nedbank logo on `ai.snowflake.com`, and hides the logo when the sidebar is collapsed.
 
 ---
 
-## Install (colleagues)
+## Install (one-time setup)
 
-1. **Install Tampermonkey** from your browser's extension store:
-   - [Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
-   - [Firefox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)
-   - [Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd)
+### Step 1 — Install Tampermonkey
 
-   > **Chrome users:** after installing Tampermonkey, open `chrome://extensions`, find Tampermonkey and click **Details**, then enable **Allow User Scripts**. The script will not run without this step.
+Install the Tampermonkey browser extension from your browser's official store:
 
-2. **Click the install link:**
-   [https://raw.githubusercontent.com/jaderiley/nedbank-snowflake-branding/main/nedbank-branding.user.js](https://raw.githubusercontent.com/jaderiley/nedbank-snowflake-branding/main/nedbank-branding.user.js)
+- **Chrome:** https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo
+- **Edge:** https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd
+- **Firefox:** https://addons.mozilla.org/firefox/addon/tampermonkey/
+- **Brave / Opera:** use the Chrome link above (both support Chrome extensions)
 
-3. A Tampermonkey tab opens — click **Install**.
+### Step 2 — Chrome & Edge users only: enable "Allow User Scripts"
 
-4. Refresh [ai.snowflake.com](https://ai.snowflake.com). The Nedbank logo appears in the top-left nav.
+**This step is required on Chrome and Edge, or the script will not run.**
 
-The script auto-updates in the background whenever a new version is published — no action needed on your end.
+1. Go to `chrome://extensions` (or `edge://extensions` on Edge)
+2. Find **Tampermonkey** and click **Details**
+3. Scroll down and turn on **"Allow User Scripts"**
+
+(Firefox and Brave do not need this step.)
+
+### Step 3 — Install the script
+
+Open this link in your browser:
+
+```
+https://raw.githubusercontent.com/jaderiley/nedbank-snowflake-branding/main/nedbank-branding.user.js
+```
+
+Tampermonkey will open an install screen — click **Install**.
+
+### Done
+
+Visit `ai.snowflake.com` — the Nedbank logo should appear in place of the Snowflake logo. You never need to reinstall; updates arrive automatically.
 
 ---
 
-## Pushing an update (Jade)
+## It's not working?
 
-1. Edit `nedbank-branding.user.js`.
-2. Bump `@version` in the `==UserScript==` header (e.g. `1.0.0` → `1.1.0`).
-3. Commit and push to `main`.
+1. **Hard-refresh** the Snowflake page: `Ctrl+Shift+R`
+2. **Chrome/Edge:** double-check **"Allow User Scripts"** is enabled (Step 2 above) — this is the most common cause
+3. Click the Tampermonkey icon and confirm **"Snowflake CoWork – Nedbank Branding"** is listed and enabled (green)
+4. Still stuck? Open DevTools (F12) → Console and run:
+   ```javascript
+   console.log('logo present:', !!document.querySelector('img.nedbank-logo'));
+   ```
+   - `true` = script is running (likely a display quirk, refresh)
+   - `false` = script isn't executing (recheck Steps 2 & 3)
 
-Tampermonkey checks the `@updateURL` on each browser session and silently updates for all installed users.
+---
+
+## For maintainers: pushing an update
+
+Everyone auto-updates from this repo. To push a change:
+
+1. Edit `nedbank-branding.user.js`
+2. **Bump the `@version` number** in the header (e.g. `4.1.0` → `4.1.1`) — **this is mandatory; updates will not propagate without it**
+3. Commit and push to `main`
+
+Tampermonkey checks for updates automatically (~daily). Users can force an immediate update via the Tampermonkey icon → "Check for userscript updates".
